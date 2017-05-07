@@ -8,13 +8,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.anril.presentation.MainActivity">
+        <activity android:name="com.anril.presentation.specialties.SpecialtiesActivity"
+            android:label="@string/act_title_specialties">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".persons.PersonsActivity"
+            android:label="@string/act_title_persons"/>
     </application>
 
 </manifest>

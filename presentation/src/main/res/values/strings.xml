@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">65gb-test-assignment</string>
+    <string name="app_name">Test Assignment</string>
+
+    <string name="act_title_specialties">Specialties</string>
+    <string name="act_title_persons">Person</string>
+    <string name="act_title_person_detail">Person detail</string>
 </resources>
