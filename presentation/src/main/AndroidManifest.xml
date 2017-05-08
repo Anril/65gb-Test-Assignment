@@ -17,8 +17,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".persons.PersonsActivity"
+        <activity android:name=".personslist.PersonsListActivity"
             android:label="@string/act_title_persons"/>
+
+        <activity android:name=".persondetail.PersonDetailActivity"
+            android:label="@string/act_title_person_detail"/>
     </application>
 
 </manifest>

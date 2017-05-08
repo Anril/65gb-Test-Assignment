@@ -3,14 +3,16 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/fl_main_container"
+    <fragment
+        android:name="com.anril.presentation.fragments.personslist.PersonsListFragment"
+        android:id="@+id/fr_main_container"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_weight="1"/>
+        android:layout_weight="2"/>
 
-    <FrameLayout
-        android:id="@+id/fl_addition_container"
+    <fragment
+        android:name="com.anril.presentation.fragments.persondetail.PersonDetailFragment"
+        android:id="@+id/extra_container"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_weight="1"/>

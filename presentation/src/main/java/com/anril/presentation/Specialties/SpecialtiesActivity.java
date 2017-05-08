@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.anril.presentation.R;
 import com.anril.presentation.models.Specialty;
-import com.anril.presentation.persons.PersonsActivity;
+import com.anril.presentation.personslist.PersonsListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +70,7 @@ public class SpecialtiesActivity extends AppCompatActivity implements
 
     @Override
     public void navigateToPersons(int specialtyId) {
-        Intent intent = new Intent(this, PersonsActivity.class);
+        Intent intent = new Intent(this, PersonsListActivity.class);
         startActivity(intent);
     }
 }
