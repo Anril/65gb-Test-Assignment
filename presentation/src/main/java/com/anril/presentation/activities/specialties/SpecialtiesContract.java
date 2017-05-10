@@ -1,6 +1,7 @@
 package com.anril.presentation.activities.specialties;
 
 import com.anril.presentation.models.Speciality;
+import com.arellomobile.mvp.MvpView;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 interface SpecialtiesContract {
 
-    interface View {
+    interface View extends MvpView {
         void showSpecialties(List<Speciality> specialties);
 
         void showLoadingIndicator();

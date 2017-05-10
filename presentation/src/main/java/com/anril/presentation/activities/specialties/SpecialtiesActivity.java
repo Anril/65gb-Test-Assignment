@@ -16,6 +16,8 @@ import com.anril.presentation.App;
 import com.anril.presentation.R;
 import com.anril.presentation.models.Speciality;
 import com.anril.presentation.activities.personslist.PersonsListActivity;
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +25,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SpecialtiesActivity extends AppCompatActivity implements
+public class SpecialtiesActivity extends MvpAppCompatActivity implements
         SpecialtiesContract.View,
         SwipeRefreshLayout.OnRefreshListener {
 
-    private SpecialtiesContract.Presenter presenter;
+    @InjectPresenter
+    SpecialtiesPresenter presenter;
 
     @BindView(R.id.srl_refresh_layout)
     SwipeRefreshLayout refreshLayout;
@@ -42,7 +45,6 @@ public class SpecialtiesActivity extends AppCompatActivity implements
         setContentView(R.layout.act_specialties);
 
         ButterKnife.bind(this);
-        presenter = new SpecialtiesPresenter(this);
 
         refreshLayout.setOnRefreshListener(this);
 

@@ -5,6 +5,8 @@ import com.anril.persistance.repositories.SpecialityRepository;
 import com.anril.presentation.App;
 import com.anril.presentation.mappers.ViewDataMapper;
 import com.anril.presentation.models.Speciality;
+import com.arellomobile.mvp.InjectViewState;
+import com.arellomobile.mvp.MvpPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +19,12 @@ import io.reactivex.schedulers.Schedulers;
  * Created by Anril on 07.05.2017.
  */
 
-public class SpecialtiesPresenter implements SpecialtiesContract.Presenter {
+@InjectViewState
+public class SpecialtiesPresenter extends MvpPresenter<SpecialtiesContract.View> implements SpecialtiesContract.Presenter {
 
-    private SpecialtiesContract.View view;
+    //private SpecialtiesContract.View view;
 
-    public SpecialtiesPresenter(SpecialtiesContract.View view) {
-        this.view = view;
-    }
+    public SpecialtiesPresenter() { }
 
     @Override
     public void onCreate() {
@@ -32,7 +33,7 @@ public class SpecialtiesPresenter implements SpecialtiesContract.Presenter {
 
     @Override
     public void onRefresh() {
-        view.showLoadingIndicator();
+        getViewState().showLoadingIndicator();
 
         GetSpecialities getSpecialitiesUseCase = new GetSpecialities(new SpecialityRepository
                 (App.getDbOpenHelper()));
@@ -41,14 +42,14 @@ public class SpecialtiesPresenter implements SpecialtiesContract.Presenter {
                 .map(ViewDataMapper::specialitiesMapper)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::showSpecialties);
+                .subscribe(getViewState()::showSpecialties);
 
-        view.hideLoadingIndicator();
+        getViewState().hideLoadingIndicator();
     }
 
     @Override
     public void onSpecialtyItemClick(int specialtyId) {
-        view.navigateToPersons(specialtyId);
+        getViewState().navigateToPersons(specialtyId);
     }
 
 

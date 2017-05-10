@@ -7,10 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.anril.presentation.R;
 import com.anril.presentation.models.Person;
+import com.bumptech.glide.Glide;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -33,6 +35,8 @@ public class PersonDetailFragment extends Fragment implements PersonDetailContra
     TextView birthdayTextView;
     @BindView(R.id.tv_specialties)
     TextView specialitiesTextView;
+    @BindView(R.id.img_avatar)
+    ImageView avatarImageView;
 
     private PersonDetailContract.Presenter presenter;
 
@@ -73,6 +77,8 @@ public class PersonDetailFragment extends Fragment implements PersonDetailContra
                 specialitiesTextView.append(", ");
             }
         }
+
+        Glide.with(this).load(person.getAvatarUrl()).into(avatarImageView);
     }
 
     @Override

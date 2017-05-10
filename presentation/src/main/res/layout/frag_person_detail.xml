@@ -15,7 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
         android:layout_toRightOf="@id/img_avatar"
+        android:layout_toEndOf="@id/img_avatar"
         android:text="firstname"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
@@ -24,8 +26,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/tv_firstname"
+        android:layout_alignStart="@id/tv_firstname"
         android:layout_below="@id/tv_firstname"
         android:layout_toRightOf="@id/img_avatar"
+        android:layout_toEndOf="@id/img_avatar"
         android:text="lastname"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
@@ -34,16 +38,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/tv_firstname"
+        android:layout_alignStart="@id/tv_firstname"
         android:layout_below="@id/tv_lastname"
         android:layout_toRightOf="@id/img_avatar"
+        android:layout_toEndOf="@id/img_avatar"
         android:text="birthday"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
     <TextView
         android:id="@+id/tv_specialties"
         android:layout_width="match_parent"
-        android:layout_alignLeft="@id/tv_firstname"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_firstname"
         android:layout_below="@id/tv_birthday"
         android:layout_toRightOf="@id/img_avatar"
         android:text="specialties"
