@@ -77,6 +77,7 @@ public class SpecialtiesActivity extends AppCompatActivity implements
     @Override
     public void navigateToPersons(int specialtyId) {
         Intent intent = new Intent(this, PersonsListActivity.class);
+        intent.putExtra("speciality id", specialtyId);
         startActivity(intent);
     }
 }

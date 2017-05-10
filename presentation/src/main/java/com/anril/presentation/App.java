@@ -2,7 +2,9 @@ package com.anril.presentation;
 
 import android.app.Application;
 
+import com.anril.domain.usecases.FetchData;
 import com.anril.persistance.entities.Person;
+import com.anril.persistance.services.App65Service;
 import com.anril.persistance.services.Apps65Api;
 import com.anril.persistance.shered.DbOpenHelper;
 import com.google.gson.Gson;
@@ -43,5 +45,13 @@ public class App extends Application {
 
         apps65Service = retrofit.create(Apps65Api.class);
         dbOpenHelper = new DbOpenHelper(getApplicationContext());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                new FetchData(new App65Service(App.getApps65Service(), dbOpenHelper)).execute();
+            }
+        }).start();
     }
 }

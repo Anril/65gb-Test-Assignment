@@ -15,6 +15,7 @@ public interface PersonsListContract {
         void showRefreshIndicator();
         void hideRefreshIndicator();
         void onPersonItemCick(Person person);
+        int getSpecialityId();
     }
 
     interface Presenter {

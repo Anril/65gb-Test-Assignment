@@ -56,9 +56,14 @@ class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         String fullName = persons.get(position).getFirstName() + " "
-                + persons.get(position).getFirstName();
+                + persons.get(position).getLastName();
         holder.nameTextView.setText(fullName);
-        holder.ageTextView.setText(String.valueOf(persons.get(position).getAge()));
+        if (persons.get(position).getBirthday() == 0) {
+            holder.ageTextView.setText("-");
+
+        } else {
+            holder.ageTextView.setText(String.valueOf(persons.get(position).getAge()));
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

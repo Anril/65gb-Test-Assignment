@@ -13,6 +13,7 @@ import com.anril.presentation.R;
 import com.anril.presentation.models.Person;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
  * Created by Anril on 08.05.2017.
  */
 
-public class PersonDetailFragment extends Fragment implements PersonDetailContract.View{
+public class PersonDetailFragment extends Fragment implements PersonDetailContract.View {
 
     @BindView(R.id.tv_firstname)
     TextView firstNameTextView;
@@ -55,14 +56,23 @@ public class PersonDetailFragment extends Fragment implements PersonDetailContra
         firstNameTextView.setText(person.getFirstName());
         lastNameTextView.setText(person.getLastName());
 
-        DateFormat dateFormat = DateFormat.getDateInstance();
-        Date date = new Date(person.getBirthday());
-        birthdayTextView.setText(dateFormat.format(date));
+        if (person.getBirthday() == 0) {
+            birthdayTextView.setText("-");
+        } else {
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy г.");
+            Date date = new Date(person.getBirthday());
+            birthdayTextView.setText(format.format(date));
+        }
 
+        specialitiesTextView.setText("");
+        for (int i = 0; i < person.getSpecialties().length; i++) {
+            String[] specs = person.getSpecialties();
+            specialitiesTextView.append(specs[i]);
 
-//        DateFormat dateFormat = DateFormat.getDateTimeInstance();
-//        Date date = new Date(image.getDate());
-//        imageDateTextView.setText(dateFormat.format(date));
+            if (i + 1 < person.getSpecialties().length) {
+                specialitiesTextView.append(", ");
+            }
+        }
     }
 
     @Override

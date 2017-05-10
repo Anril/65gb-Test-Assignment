@@ -3,6 +3,7 @@ package com.anril.presentation.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -27,6 +28,7 @@ public class Person implements Parcelable{
         id = in.readInt();
         firstName = in.readString();
         lastName = in.readString();
+        birthday = in.readLong();
         specialties = in.createStringArray();
         avatarUrl = in.readString();
     }
@@ -88,7 +90,12 @@ public class Person implements Parcelable{
     }
 
     public int getAge() {
-        return 27;
+        if (birthday ==0 )
+            return 0;
+        long now = System.currentTimeMillis();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(now - birthday);
+        return calendar.get(Calendar.YEAR) - 1970;
     }
 
     public void setAvatarUrl(String avatarUrl) {
@@ -105,6 +112,7 @@ public class Person implements Parcelable{
         dest.writeInt(id);
         dest.writeString(firstName);
         dest.writeString(lastName);
+        dest.writeLong(birthday);
         dest.writeStringArray(specialties);
         dest.writeString(avatarUrl);
     }

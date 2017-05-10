@@ -93,6 +93,11 @@ public class PersonsListFragment extends Fragment implements PersonsListContract
     }
 
     @Override
+    public int getSpecialityId() {
+        return getActivity().getIntent().getIntExtra("speciality id", 0);
+    }
+
+    @Override
     public void onRefresh() {
         presenter.onRefresh();
     }

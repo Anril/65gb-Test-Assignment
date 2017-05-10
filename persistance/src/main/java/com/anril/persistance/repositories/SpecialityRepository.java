@@ -9,6 +9,11 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Single;
+import io.reactivex.SingleEmitter;
+import io.reactivex.SingleOnSubscribe;
+import io.reactivex.annotations.NonNull;
+
 /**
  * Created by Anril on 06.05.2017.
  */
@@ -22,16 +27,21 @@ public class SpecialityRepository implements SpecialityDataSource {
     }
 
     @Override
-    public List<Speciality> getAll() {
-        RuntimeExceptionDao<com.anril.persistance.entities.Speciality, Integer> specialityDao =
-                dbOpenHelper.getSpecialityRuntimeDao();
-        List<com.anril.persistance.entities.Speciality> entities = specialityDao.queryForAll();
+    public Single<List<Speciality>> getAll() {
+        return Single.create(new SingleOnSubscribe<List<Speciality>>() {
+            @Override
+            public void subscribe(@NonNull SingleEmitter<List<Speciality>> e) throws Exception {
+                RuntimeExceptionDao<com.anril.persistance.entities.Speciality, Integer> specialityDao =
+                        dbOpenHelper.getSpecialityRuntimeDao();
+                List<com.anril.persistance.entities.Speciality> entities = specialityDao.queryForAll();
 
-        List<Speciality> specialities = new ArrayList<>();
-        for (int i = 0; i < entities.size(); i++) {
-            specialities.add(ModelDataMapper.specialityMapper(entities.get(i)));
-        }
+                List<Speciality> specialities = new ArrayList<>();
+                for (int i = 0; i < entities.size(); i++) {
+                    specialities.add(ModelDataMapper.specialityMapper(entities.get(i)));
+                }
 
-        return specialities;
+                e.onSuccess(specialities);
+            }
+        });
     }
 }

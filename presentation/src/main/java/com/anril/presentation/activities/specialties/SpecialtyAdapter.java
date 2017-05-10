@@ -58,7 +58,7 @@ class SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onSpecialtyItemClick(position);
+                presenter.onSpecialtyItemClick(specialties.get(position).getId());
             }
         });
     }

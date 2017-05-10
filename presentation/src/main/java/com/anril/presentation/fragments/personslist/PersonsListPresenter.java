@@ -1,9 +1,16 @@
 package com.anril.presentation.fragments.personslist;
 
+import com.anril.domain.usecases.GetPersonsBySpecialityId;
+import com.anril.persistance.repositories.PersonRepository;
+import com.anril.presentation.App;
+import com.anril.presentation.mappers.ViewDataMapper;
 import com.anril.presentation.models.Person;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Anril on 08.05.2017.
@@ -21,32 +28,26 @@ public class PersonsListPresenter implements PersonsListContract.Presenter {
     public void onCreate() {
         view.showRefreshIndicator();
 
-        Person tmpPerson = new Person();
-        tmpPerson.setFirstName("Alexander");
-        List<Person> list = new ArrayList<>();
-        list.add(tmpPerson);
+        GetPersonsBySpecialityId getPersonsBySpecialityIdUseCase = new GetPersonsBySpecialityId(
+                new PersonRepository(App.getDbOpenHelper()));
+        int id = view.getSpecialityId();
 
-        tmpPerson = new Person();
-        tmpPerson.setFirstName("Konstantin");
-        list.add(tmpPerson);
+        getPersonsBySpecialityIdUseCase
+                .execute(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(ViewDataMapper::personsMapper)
+                .subscribe(view::showPersons);
 
-        view.showPersons(list);
         view.hideRefreshIndicator();
     }
 
     public void onRefresh() {
         view.showRefreshIndicator();
 
-        Person tmpPerson = new Person();
-        tmpPerson.setFirstName("Alexander");
-        List<Person> list = new ArrayList<>();
-        list.add(tmpPerson);
 
-        tmpPerson = new Person();
-        tmpPerson.setFirstName("Konstantin");
-        list.add(tmpPerson);
 
-        view.showPersons(list);
+        //view.showPersons(list);
         view.hideRefreshIndicator();
     }
 

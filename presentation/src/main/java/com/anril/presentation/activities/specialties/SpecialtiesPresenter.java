@@ -1,9 +1,17 @@
 package com.anril.presentation.activities.specialties;
 
+import com.anril.domain.usecases.GetSpecialities;
+import com.anril.persistance.repositories.SpecialityRepository;
+import com.anril.presentation.App;
+import com.anril.presentation.mappers.ViewDataMapper;
 import com.anril.presentation.models.Speciality;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Anril on 07.05.2017.
@@ -25,16 +33,16 @@ public class SpecialtiesPresenter implements SpecialtiesContract.Presenter {
     @Override
     public void onRefresh() {
         view.showLoadingIndicator();
-        List<Speciality> specialties = new ArrayList<>();
 
-        Speciality tmpSpeciality = new Speciality();
-        tmpSpeciality.setName("Экономист");
-        specialties.add(tmpSpeciality);
-        tmpSpeciality = new Speciality();
-        tmpSpeciality.setName("Accountant");
-        specialties.add(tmpSpeciality);
+        GetSpecialities getSpecialitiesUseCase = new GetSpecialities(new SpecialityRepository
+                (App.getDbOpenHelper()));
 
-        view.showSpecialties(specialties);
+        getSpecialitiesUseCase.execute()
+                .map(ViewDataMapper::specialitiesMapper)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(view::showSpecialties);
+
         view.hideLoadingIndicator();
     }
 
@@ -42,5 +50,6 @@ public class SpecialtiesPresenter implements SpecialtiesContract.Presenter {
     public void onSpecialtyItemClick(int specialtyId) {
         view.navigateToPersons(specialtyId);
     }
+
 
 }
