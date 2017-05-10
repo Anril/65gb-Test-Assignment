@@ -2,7 +2,7 @@
 Test assignment for android developers
 
 ## Architecture
-Used 3-tier architecture based on Uncle Bob clean architecture
+Used 3-tier architecture based on Uncle Bob clean approaches
 
 <img src="https://github.com/Anril/65gb-Test-Assignment/blob/master/screenshots/2017-05-10%2008-51-29.JPG" width="700"/>
 
