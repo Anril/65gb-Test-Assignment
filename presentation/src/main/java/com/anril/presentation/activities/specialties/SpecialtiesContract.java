@@ -1,6 +1,6 @@
-package com.anril.presentation.specialties;
+package com.anril.presentation.activities.specialties;
 
-import com.anril.presentation.models.Specialty;
+import com.anril.presentation.models.Speciality;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
 interface SpecialtiesContract {
 
     interface View {
-        void showSpecialties(List<Specialty> specialties);
+        void showSpecialties(List<Speciality> specialties);
 
         void showLoadingIndicator();
         void hideLoadingIndicator();

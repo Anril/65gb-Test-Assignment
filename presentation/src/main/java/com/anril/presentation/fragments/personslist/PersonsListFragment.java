@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.anril.presentation.R;
 import com.anril.presentation.models.Person;
-import com.anril.presentation.personslist.PersonsListActivity;
+import com.anril.presentation.activities.personslist.PersonsListActivity;
 
 import java.util.ArrayList;
 import java.util.List;

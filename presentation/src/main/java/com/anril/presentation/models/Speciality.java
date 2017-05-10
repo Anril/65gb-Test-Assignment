@@ -4,13 +4,13 @@ package com.anril.presentation.models;
  * Created by Anril on 07.05.2017.
  */
 
-public class Specialty {
+public class Speciality {
 
     private int id;
 
     private String name;
 
-    public Specialty() {}
+    public Speciality() {}
 
     public int getId() {
         return id;

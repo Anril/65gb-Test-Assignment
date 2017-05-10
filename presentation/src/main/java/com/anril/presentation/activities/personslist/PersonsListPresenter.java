@@ -1,6 +1,5 @@
-package com.anril.presentation.personslist;
+package com.anril.presentation.activities.personslist;
 
-import com.anril.presentation.fragments.persondetail.PersonDetailContract;
 import com.anril.presentation.models.Person;
 
 /**

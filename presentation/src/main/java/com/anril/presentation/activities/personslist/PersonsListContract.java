@@ -1,8 +1,6 @@
-package com.anril.presentation.personslist;
+package com.anril.presentation.activities.personslist;
 
 import com.anril.presentation.models.Person;
-
-import java.util.List;
 
 /**
  * Created by Anril on 07.05.2017.

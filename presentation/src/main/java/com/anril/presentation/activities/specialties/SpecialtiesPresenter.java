@@ -1,6 +1,6 @@
-package com.anril.presentation.specialties;
+package com.anril.presentation.activities.specialties;
 
-import com.anril.presentation.models.Specialty;
+import com.anril.presentation.models.Speciality;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +25,14 @@ public class SpecialtiesPresenter implements SpecialtiesContract.Presenter {
     @Override
     public void onRefresh() {
         view.showLoadingIndicator();
-        List<Specialty> specialties = new ArrayList<>();
+        List<Speciality> specialties = new ArrayList<>();
 
-        Specialty tmpSpecialty = new Specialty();
-        tmpSpecialty.setName("Экономист");
-        specialties.add(tmpSpecialty);
-        tmpSpecialty = new Specialty();
-        tmpSpecialty.setName("Accountant");
-        specialties.add(tmpSpecialty);
+        Speciality tmpSpeciality = new Speciality();
+        tmpSpeciality.setName("Экономист");
+        specialties.add(tmpSpeciality);
+        tmpSpeciality = new Speciality();
+        tmpSpeciality.setName("Accountant");
+        specialties.add(tmpSpeciality);
 
         view.showSpecialties(specialties);
         view.hideLoadingIndicator();

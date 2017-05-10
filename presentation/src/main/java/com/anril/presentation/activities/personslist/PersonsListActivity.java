@@ -1,17 +1,14 @@
-package com.anril.presentation.personslist;
+package com.anril.presentation.activities.personslist;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 
 import com.anril.presentation.R;
 import com.anril.presentation.fragments.persondetail.PersonDetailFragment;
 import com.anril.presentation.models.Person;
-import com.anril.presentation.persondetail.PersonDetailActivity;
-
-import java.util.List;
+import com.anril.presentation.activities.persondetail.PersonDetailActivity;
 
 /**
  * Created by Anril on 07.05.2017.

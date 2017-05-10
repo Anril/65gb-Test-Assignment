@@ -7,8 +7,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.anril.presentation.specialties.SpecialtiesActivity"
+        android:theme="@style/AppTheme"
+        android:name=".App">
+        <activity android:name=".activities.specialties.SpecialtiesActivity"
             android:label="@string/act_title_specialties">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,10 +18,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".personslist.PersonsListActivity"
+        <activity android:name=".activities.personslist.PersonsListActivity"
             android:label="@string/act_title_persons"/>
 
-        <activity android:name=".persondetail.PersonDetailActivity"
+        <activity android:name=".activities.persondetail.PersonDetailActivity"
             android:label="@string/act_title_person_detail"/>
     </application>
 

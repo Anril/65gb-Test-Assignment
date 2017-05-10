@@ -1,4 +1,4 @@
-package com.anril.presentation.specialties;
+package com.anril.presentation.activities.specialties;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.anril.presentation.R;
-import com.anril.presentation.models.Specialty;
+import com.anril.presentation.models.Speciality;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 
 class SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder> {
 
-    private List<Specialty> specialties;
+    private List<Speciality> specialties;
     private SpecialtiesContract.Presenter presenter;
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -34,12 +34,12 @@ class SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>
         }
     }
 
-    SpecialtyAdapter(List<Specialty> specialties, SpecialtiesContract.Presenter presenter) {
+    SpecialtyAdapter(List<Speciality> specialties, SpecialtiesContract.Presenter presenter) {
         this.specialties = specialties;
         this.presenter = presenter;
     }
 
-    public void replaceDataSet(List<Specialty> specialties) {
+    public void replaceDataSet(List<Speciality> specialties) {
         this.specialties = specialties;
         notifyDataSetChanged();
     }

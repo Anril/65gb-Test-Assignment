@@ -1,4 +1,4 @@
-package com.anril.presentation.specialties;
+package com.anril.presentation.activities.specialties;
 
 import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -7,9 +7,15 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.anril.domain.sources.PersonDataSource;
+import com.anril.domain.sources.SpecialityDataSource;
+import com.anril.persistance.repositories.PersonRepository;
+import com.anril.persistance.repositories.SpecialityRepository;
+import com.anril.persistance.services.App65Service;
+import com.anril.presentation.App;
 import com.anril.presentation.R;
-import com.anril.presentation.models.Specialty;
-import com.anril.presentation.personslist.PersonsListActivity;
+import com.anril.presentation.models.Speciality;
+import com.anril.presentation.activities.personslist.PersonsListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +46,7 @@ public class SpecialtiesActivity extends AppCompatActivity implements
 
         refreshLayout.setOnRefreshListener(this);
 
-        List<Specialty> specialties = new ArrayList<>();
+        List<Speciality> specialties = new ArrayList<>();
         specialtyAdapter = new SpecialtyAdapter(specialties, presenter);
         specialtiesRecyclerView.setAdapter(specialtyAdapter);
         specialtiesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -54,7 +60,7 @@ public class SpecialtiesActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void showSpecialties(List<Specialty> specialties) {
+    public void showSpecialties(List<Speciality> specialties) {
         specialtyAdapter.replaceDataSet(specialties);
     }
 
